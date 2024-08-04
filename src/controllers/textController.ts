@@ -31,3 +31,21 @@ export const getLongestWord = async (req: Request, res: Response) => {
   const longestWord = textService.getLongestWord(text);
   res.json({ longestWord });
 };
+
+export const createText = async (req: Request, res: Response) => {
+  const { content } = req.body;
+
+  if (!content) {
+    return res.status(400).json({ message: 'Content is required' });
+  }
+
+  try {
+    const newText = new Text({ content });
+    const savedText = await newText.save();
+
+    res.status(201).json({ id: savedText._id });
+  } catch (error) {
+    console.error('Error creating text:', error);
+    res.status(500).json({ message: 'Error creating text in database', error });
+  }
+};

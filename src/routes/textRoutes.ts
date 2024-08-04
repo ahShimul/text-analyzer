@@ -5,6 +5,7 @@ import {
   getSentenceCount,
   getParagraphCount,
   getLongestWord,
+  createText,
 } from '@src/controllers/textController';
 import fetchTextMiddleware from '@src/middlewares/fetchTextMiddleware';
 
@@ -15,5 +16,7 @@ router.get('/:textId/word-count', fetchTextMiddleware, getWordCount);
 router.get('/:textId/sentence-count', fetchTextMiddleware, getSentenceCount);
 router.get('/:textId/paragraph-count', fetchTextMiddleware, getParagraphCount);
 router.get('/:textId/longest-word', fetchTextMiddleware, getLongestWord);
+
+router.post('/texts', createText);
 
 export default router;

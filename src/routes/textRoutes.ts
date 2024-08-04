@@ -6,13 +6,14 @@ import {
   getParagraphCount,
   getLongestWord,
 } from '@src/controllers/textController';
+import fetchTextMiddleware from '@src/middlewares/fetchTextMiddleware';
 
 const router: Router = Router();
 
-router.post('/word-count', getWordCount);
-router.post('/character-count', getCharacterCount);
-router.post('/sentence-count', getSentenceCount);
-router.post('/paragraph-count', getParagraphCount);
-router.post('/longest-word', getLongestWord);
+router.get('/:textId/character-count', fetchTextMiddleware, getCharacterCount);
+router.get('/:textId/word-count', fetchTextMiddleware, getWordCount);
+router.get('/:textId/sentence-count', fetchTextMiddleware, getSentenceCount);
+router.get('/:textId/paragraph-count', fetchTextMiddleware, getParagraphCount);
+router.get('/:textId/longest-word', fetchTextMiddleware, getLongestWord);
 
 export default router;

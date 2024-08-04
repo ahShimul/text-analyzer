@@ -5,6 +5,6 @@ import textRoutes from '@src/routes/textRoutes';
 const app: Application = express();
 
 app.use(bodyParser.json());
-app.use('/api/text', textRoutes);
+app.use('/api/v1', textRoutes);
 
 export default app;

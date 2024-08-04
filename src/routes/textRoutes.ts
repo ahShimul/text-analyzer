@@ -1,21 +1,10 @@
 import { Router } from 'express';
-import {
-  getWordCount,
-  getCharacterCount,
-  getSentenceCount,
-  getParagraphCount,
-  getLongestWord,
-  createText,
-} from '@src/controllers/textController';
+import { createText, handleTextAction } from '@src/controllers/textController';
 import fetchTextMiddleware from '@src/middlewares/fetchTextMiddleware';
 
 const router: Router = Router();
 
-router.get('/:textId/character-count', fetchTextMiddleware, getCharacterCount);
-router.get('/:textId/word-count', fetchTextMiddleware, getWordCount);
-router.get('/:textId/sentence-count', fetchTextMiddleware, getSentenceCount);
-router.get('/:textId/paragraph-count', fetchTextMiddleware, getParagraphCount);
-router.get('/:textId/longest-word', fetchTextMiddleware, getLongestWord);
+router.get('/:textId/:action', fetchTextMiddleware, handleTextAction);
 
 router.post('/texts', createText);
 

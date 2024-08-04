@@ -15,7 +15,6 @@ export const countParagraphs = (text: string): number => {
     .split(/\n+/)
     .filter((paragraph) => paragraph.trim().length > 0);
 
-  console.log(paragraphs);
   return paragraphs.length;
 };
 

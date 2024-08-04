@@ -22,7 +22,7 @@ const fetchTextMiddleware = async (
       return res.status(404).json({ message: 'Text not found' });
     }
 
-    req.body.content = textDocument.content;
+    req.body.content = textDocument;
     next();
   } catch (error) {
     console.log(error);

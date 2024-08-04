@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import app from '@src/app';
+import env from '@src/config/config';
 
-const PORT = process.env.PORT || 3000;
-const MONGO_URL = 'mongodb://localhost:27017/text-analyzer';
+const PORT = env.PORT;
+const MONGO_URL = `mongodb://${env.MONGO_URL}/${env.MONGO_DB}`;
 
 mongoose
   .connect(MONGO_URL)

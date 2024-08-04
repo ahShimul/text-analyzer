@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { createText, handleTextAction } from '@src/controllers/textController';
 import fetchTextMiddleware from '@src/middlewares/fetchTextMiddleware';
+import rateLimiterMiddleware from '@src/middlewares/rateLimiterMiddleware';
 
 const router: Router = Router();
 
@@ -43,7 +44,12 @@ const router: Router = Router();
  *         description: Internal server error
  */
 
-router.get('/:textId/:action', fetchTextMiddleware, handleTextAction);
+router.get(
+  '/:textId/:action',
+  rateLimiterMiddleware,
+  fetchTextMiddleware,
+  handleTextAction
+);
 
 /**
  * @swagger
@@ -79,6 +85,6 @@ router.get('/:textId/:action', fetchTextMiddleware, handleTextAction);
  *       500:
  *         description: Internal server error
  */
-router.post('/texts', createText);
+router.post('/texts', rateLimiterMiddleware, createText);
 
 export default router;

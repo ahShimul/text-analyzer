@@ -51,7 +51,10 @@ describe('createText', () => {
 
     expect(mockSave).toHaveBeenCalledTimes(1);
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith({ id: 'mocked_id' });
+    expect(res.json).toHaveBeenCalledWith({
+      data: { id: 'mocked_id' },
+      message: 'Resource created successfully',
+    });
   });
 
   it('should return 400 if content is not provided', async () => {
@@ -86,8 +89,7 @@ describe('createText', () => {
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({
-      message: 'Error creating text in database',
-      error: expect.any(Error),
+      message: 'Could not process the request',
     });
   });
 });

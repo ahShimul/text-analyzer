@@ -1,0 +1,8 @@
+- Install node.js version 20
+- Install MongoDB on local machine.
+- Run MongoDB local on PORT 27017.
+- Install redis on local machine
+- Run redis on PORT 6379
+- Run `npm install` in the root directory
+- Run `npm start` to run the server on PORT 3000
+- Go to `http://localhost:3000/api-docs/` for testing the APIs
